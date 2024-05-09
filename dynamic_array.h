@@ -63,4 +63,15 @@ void dynamic_array<T>::append(T element) {
     array[size++] = element;
 }
 
-template<type
+template<typename T>
+void dynamic_array<T>::resize(int new_capacity) {
+    T *new_array = new T[new_capacity];
+    for (int i = 0; i < size; ++i) {
+        new_array[i] = array[i];
+    }
+    delete[] array;
+    array = new_array;
+    capacity = new_capacity;
+}
+
+#endif /* DYNAMIC_ARRAY_H */
